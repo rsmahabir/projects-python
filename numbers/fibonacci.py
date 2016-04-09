@@ -4,14 +4,10 @@ def fibonacci(n):
         raise ValueError
     i = 0
     j = 1
-    for x in xrange(n):
-        if x == 0:
-            yield 1
-            continue
-        k = i + j
-        i = j
-        j = k
-        yield k
+    yield j
+    for x in xrange(n - 1):
+        i, j = j, i + j
+        yield j
 
 if __name__ == '__main__':
     seq = fibonacci(10)
